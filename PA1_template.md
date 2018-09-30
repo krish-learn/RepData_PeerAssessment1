@@ -28,6 +28,33 @@ Loading and preprocessing the data
 
 
 
+```r
+knitr::opts_chunk$set(echo = TRUE, fig.path = "figure/")
+
+unzip("activity.zip", exdir = getwd())
+act <- read.csv("activity.csv")
+head(act)
+```
+
+```
+##   steps       date interval
+## 1    NA 2012-10-01        0
+## 2    NA 2012-10-01        5
+## 3    NA 2012-10-01       10
+## 4    NA 2012-10-01       15
+## 5    NA 2012-10-01       20
+## 6    NA 2012-10-01       25
+```
+
+```r
+# Remove the NA values and get only complete observations
+Clean_act <- act[complete.cases(act), ]
+dim(Clean_act)
+```
+
+```
+## [1] 15264     3
+```
 
 What is mean total number of steps taken per day?
   For this part of the assignment, you can ignore the missing values in the dataset.
@@ -59,7 +86,7 @@ What is mean total number of steps taken per day?
     hist(steps_per_day$steps, main="Total number of steps per day", xlab = "Steps per day")
 ```
 
-![](PA1_template_files/figure-html/stepsperday-1.png)<!-- -->
+![](figure/stepsperday-1.png)<!-- -->
 
 ```r
     # Calculate and report the mean and median of the total number of steps taken per day
@@ -105,7 +132,7 @@ What is the average daily activity pattern?
     ylab="Average number of steps")
 ```
 
-![](PA1_template_files/figure-html/stepsperinterval-1.png)<!-- -->
+![](figure/stepsperinterval-1.png)<!-- -->
 
 ```r
     ## Which 5-minute interval, on average across all the days in the dataset, contains the
@@ -243,7 +270,7 @@ Note that there are a number of days/intervals where there are missing values (c
    library(ggplot2)
 ```
 
-![](PA1_template_files/figure-html/Calcluations for IMPUTED DATA-1.png)<!-- -->
+![](figure/Calcluations for IMPUTED DATA-1.png)<!-- -->
 
 ```r
    plt <- ggplot(new_steps_per_interval, aes(interval, steps)) +
@@ -256,5 +283,5 @@ Note that there are a number of days/intervals where there are missing values (c
    print(plt)
 ```
 
-![](PA1_template_files/figure-html/Calcluations for IMPUTED DATA-2.png)<!-- -->
+![](figure/Calcluations for IMPUTED DATA-2.png)<!-- -->
 

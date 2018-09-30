@@ -140,6 +140,22 @@ $(document).ready(function () {
 <div id="part-1" class="section level1">
 <h1>Part 1</h1>
 <p>Loading and preprocessing the data</p>
+<pre class="r"><code>knitr::opts_chunk$set(echo = TRUE, fig.path = &quot;figure/&quot;)
+
+unzip(&quot;activity.zip&quot;, exdir = getwd())
+act &lt;- read.csv(&quot;activity.csv&quot;)
+head(act)</code></pre>
+<pre><code>##   steps       date interval
+## 1    NA 2012-10-01        0
+## 2    NA 2012-10-01        5
+## 3    NA 2012-10-01       10
+## 4    NA 2012-10-01       15
+## 5    NA 2012-10-01       20
+## 6    NA 2012-10-01       25</code></pre>
+<pre class="r"><code># Remove the NA values and get only complete observations
+Clean_act &lt;- act[complete.cases(act), ]
+dim(Clean_act)</code></pre>
+<pre><code>## [1] 15264     3</code></pre>
 <p>What is mean total number of steps taken per day? For this part of the assignment, you can ignore the missing values in the dataset.</p>
 <p>Calculate the total number of steps taken per day</p>
 <p>If you do not understand the difference between a histogram and a barplot, research the difference between them. Make a histogram of the total number of steps taken each day</p>
