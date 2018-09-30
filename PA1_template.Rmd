@@ -27,8 +27,8 @@ Part 1
 Loading and preprocessing the data
 
 
-```{r fileextract, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+```{r fileextract}
+knitr::opts_chunk$set(echo = TRUE, fig.path = "figure/")
 
 unzip("activity.zip", exdir = getwd())
 act <- read.csv("activity.csv")
@@ -50,6 +50,7 @@ What is mean total number of steps taken per day?
   Calculate and report the mean and median of the total number of steps taken per day
 
 ```{r stepsperday}
+
     # Calculate the total number of steps taken per day and make a histogram
     steps_per_day <- aggregate(steps ~ date, Clean_act, sum)
     head(steps_per_day)
